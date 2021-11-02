@@ -37,6 +37,25 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.7</version>
+                <configuration>
+                    <rules>
+                        <rule>
+                            <element>CLASS</element>
+                            <excludes>
+                                <exclude>*Test</exclude>
+                            </excludes>
+                            <limits>
+                                <limit>
+                                    <counter>INSTRUCTION</counter>
+                                    <value>COVEREDRATIO</value>
+                                    <minimum>0.99</minimum>
+                                </limit>
+                            </limits>
+                        </rule>
+                    </rules>
+                </configuration>
+
+
                 <executions>
                     <execution>
                         <!-- id (придумываем сами) -->
@@ -47,13 +66,24 @@
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
+
                     <execution>
                         <!-- id (придумываем сами) -->
-                        <id>1-report-2</id>
+                        <id>1-report</id>
                         <goals>
                             <!-- какую цель выполняем (берём из справки) -->
                             <goal>report</goal>
                         </goals>
+                    </execution>
+
+                    <execution>
+                        <!-- id (придумываем сами) -->
+                        <id>1-check</id>
+                        <goals>
+                            <!-- какую цель выполняем (берём из справки) -->
+                            <goal>check</goal>
+                        </goals>
+
                     </execution>
                 </executions>
             </plugin>
